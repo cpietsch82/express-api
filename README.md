@@ -4,6 +4,10 @@ This should be a simple basic construction of an API via the express framework.
 You can use this boilerplate code to start with your own API. Adding new features,
 functionalities etc. Feel free, its up to you. Hope you enjoy this!
 
+## Installation
+
+- just clone the github repo and start `npm install` and after that `npm run dev`
+
 ## NEW FEATURES
 
 - using prisma as an ORM (using postgres)
