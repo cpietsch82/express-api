@@ -1,0 +1,27 @@
+{
+  "include": ["api"],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "dist",
+    "target": "ES2018",
+    "moduleResolution": "Node16",
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "noImplicitOverride": true,
+    "esModuleInterop": true
+  }
+}
+
+// {
+//   "compilerOptions": {
+//     "sourceMap": true,
+//     "outDir": "dist",
+//     "strict": true,
+//     "lib": ["esnext"],
+//     "esModuleInterop": true
+//   }
+// }
