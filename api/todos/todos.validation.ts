@@ -1,5 +1,11 @@
 import { ParamSchema } from "express-validator";
 
+enum TODO_STATUS {
+  TODO = "TODO",
+  IN_PROGRESS = "IN_PROGRESS",
+  FINISHED = "FINISHED",
+}
+
 export const findTodosValidation = {
   inBody: {
     skip: {
@@ -48,11 +54,37 @@ export const findTodoValidation = {
   },
 };
 
-enum TODO_STATUS {
-  TODO = "TODO",
-  IN_PROGRESS = "IN_PROGRESS",
-  FINISHED = "FINISHED",
-}
+export const createTodoValidation = {
+  inBody: {
+    todo: {
+      in: ["body"],
+      custom: {
+        options: (value) => {
+          if (value === undefined || value === "") {
+            return Promise.reject();
+          }
+          return Promise.resolve();
+        },
+      },
+      errorMessage: "Todo needs content",
+    } as ParamSchema,
+    status: {
+      optional: true,
+      in: ["body"],
+      custom: {
+        options: (value) => {
+          if (!Object.keys(TODO_STATUS).includes(value)) {
+            return Promise.reject();
+          }
+          return Promise.resolve();
+        },
+      },
+      errorMessage: `status has to be on of the following values ${Object.keys(
+        TODO_STATUS
+      )}`,
+    } as ParamSchema,
+  },
+};
 
 export const updateTodoValidation = {
   inParams: {

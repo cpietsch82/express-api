@@ -8,8 +8,10 @@ import {
   updateTodo,
 } from "./todos.controller";
 import {
+  createTodoValidation,
   findTodosValidation,
   findTodoValidation,
+  removeTodoValidation,
   updateTodoValidation,
 } from "./todos.validation";
 import { handleValidationErrors } from "./../lib/middleware/validation.middleware";
@@ -32,7 +34,12 @@ router.get(
   handleValidationErrors,
   findTodo
 );
-router.post("/todos", createTodo);
+router.post(
+  "/todos",
+  checkSchema({ ...createTodoValidation.inBody }),
+  handleValidationErrors,
+  createTodo
+);
 router.put(
   "/todos/:id",
   checkSchema({
@@ -42,6 +49,11 @@ router.put(
   handleValidationErrors,
   updateTodo
 );
-router.delete("/todos/:id", removeTodo);
+router.delete(
+  "/todos/:id",
+  checkSchema({ ...removeTodoValidation.inParams }),
+  handleValidationErrors,
+  removeTodo
+);
 
 export default router;
