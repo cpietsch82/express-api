@@ -15,6 +15,7 @@ functionalities etc. Feel free, its up to you. Hope you enjoy this!
 - added some user functionality (update, remove, validations, etc.)
 - adding support for passport (using other authentication providers)
 - added webpack
+- added swagger ui for extra documentation
 
 ## Stay in touch
 
