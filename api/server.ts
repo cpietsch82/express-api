@@ -6,6 +6,7 @@ import morgan from "morgan";
 import cors from "cors";
 import { authentication } from "./lib/middleware/authentication.middleware";
 import * as dotenv from "dotenv";
+import { errorHandler } from "./lib/middleware/errorhandler.middleware";
 dotenv.config();
 
 const app = express();
@@ -21,6 +22,10 @@ app.use(cors());
 app.use("/api/v1", authRoutes);
 app.use("/api/v1", authentication, userRoutes);
 app.use("/api/v1", authentication, todoRoutes);
+
+// error handler middleware needs to be the last app option after adding routes,
+// otherwise the handler doesnt work properly
+app.use(errorHandler);
 
 app.listen(process.env.API_PORT, () => {
   console.log(`Server listen on port ${process.env.API_PORT}`);

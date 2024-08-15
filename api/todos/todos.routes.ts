@@ -15,6 +15,7 @@ import {
   updateTodoValidation,
 } from "./todos.validation";
 import { handleValidationErrors } from "./../lib/middleware/validation.middleware";
+import { asyncErrorHander } from "../lib/middleware/errorhandler.middleware";
 
 const router = Router();
 
@@ -24,7 +25,7 @@ router.get(
     ...findTodosValidation.inBody,
   }),
   handleValidationErrors,
-  findTodos
+  asyncErrorHander(findTodos)
 );
 router.get(
   "/todos/:id",
@@ -32,13 +33,13 @@ router.get(
     ...findTodoValidation.inParams,
   }),
   handleValidationErrors,
-  findTodo
+  asyncErrorHander(findTodo)
 );
 router.post(
   "/todos",
   checkSchema({ ...createTodoValidation.inBody }),
   handleValidationErrors,
-  createTodo
+  asyncErrorHander(createTodo)
 );
 router.put(
   "/todos/:id",
@@ -47,13 +48,13 @@ router.put(
     ...updateTodoValidation.inBody,
   }),
   handleValidationErrors,
-  updateTodo
+  asyncErrorHander(updateTodo)
 );
 router.delete(
   "/todos/:id",
   checkSchema({ ...removeTodoValidation.inParams }),
   handleValidationErrors,
-  removeTodo
+  asyncErrorHander(removeTodo)
 );
 
 export default router;

@@ -9,20 +9,20 @@ import { randomUUID } from "crypto";
  * @param {Response} res
  */
 export const signUp = async (req: Request, res: Response) => {
-  try {
-    const user = await prisma.user.create({
-      data: {
-        name: randomUUID(),
-        email: req.body.email,
-        password: await hashPassword(req.body.password),
-      },
-    });
-    const token = createJWT(user);
-    res.json({ token });
-  } catch (e) {
-    console.error(e);
-    res.status(401).json({ message: "Email is already used" });
-  }
+  // try {
+  const user = await prisma.user.create({
+    data: {
+      name: randomUUID(),
+      email: req.body.email,
+      password: await hashPassword(req.body.password),
+    },
+  });
+  const token = createJWT(user);
+  res.json({ token });
+  // } catch (e) {
+  //   console.error(e);
+  //   res.status(401).json({ message: "Email is already used" });
+  // }
 };
 
 /**
