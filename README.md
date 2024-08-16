@@ -19,6 +19,7 @@ functionalities etc. Feel free, its up to you. Hope you enjoy this!
 
 ## NEW FEATURES
 
+- added supertest and jest for unit and integration tests
 - added .env.local file to give you a overview of the underlying env variables you can use
 - adding error handling for routes (including async functions)
 - using prisma as an ORM (using postgres)

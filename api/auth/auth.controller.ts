@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../lib/database/db.connection";
-import { createJWT, hashPassword, validatePassword } from "../modules/auth";
+import { createJWT, hashPassword, validatePassword } from "../lib/modules/auth";
 import { randomUUID } from "crypto";
 
 /**

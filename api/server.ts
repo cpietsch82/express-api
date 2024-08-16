@@ -27,6 +27,4 @@ app.use("/api/v1", authentication, todoRoutes);
 // otherwise the handler doesnt work properly
 app.use(errorHandler);
 
-app.listen(process.env.API_PORT, () => {
-  console.log(`Server listen on port ${process.env.API_PORT}`);
-});
+export default app;
