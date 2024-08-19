@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand --detectOpenHandles",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/api.js",
     "db:migrate": "npx prisma migrate dev --name init",
     "dev": "ts-node api/api.ts",
     "dev:nodemon": "nodemon api/api.ts"
