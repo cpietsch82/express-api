@@ -29,6 +29,7 @@ functionalities etc. Feel free, its up to you. Hope you enjoy this!
 ## TODOS
 
 - update test suites, so that either all generated test data will be removed afterwards or using another database for testing
+- added winston for logging in production (dont use console.log in production)
 - added some user functionality (update, remove, validations, etc.)
 - adding support for passport (using other authentication providers)
 - added webpack
