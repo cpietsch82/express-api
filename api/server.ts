@@ -7,6 +7,7 @@ import cors from "cors";
 import { authentication } from "./lib/middleware/authentication.middleware";
 import * as dotenv from "dotenv";
 import { errorHandler } from "./lib/middleware/errorhandler.middleware";
+import helmet from "helmet";
 dotenv.config();
 
 const app = express();
@@ -14,6 +15,8 @@ const app = express();
 app.use(morgan("dev"));
 // enable json to send back from client
 app.use(express.json());
+// add security headers
+app.use(helmet());
 // allows the client to add query string and parameters (decode and encode properly)
 app.use(express.urlencoded({ extended: true }));
 // add CORS Header

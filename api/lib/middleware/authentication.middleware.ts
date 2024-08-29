@@ -5,6 +5,13 @@ export interface RequestWithUser extends Request {
   user: any;
 }
 
+/**
+ * Authentication middleware to check if user is authorized
+ * @param {Request} req - request object with user context
+ * @param {Response} res - response object
+ * @param {NextFunction} next - next function
+ * @returns void
+ */
 export const authentication = (
   req: RequestWithUser,
   res: Response,
@@ -14,16 +21,14 @@ export const authentication = (
 
   // if bearer token doesnt exist
   if (!bearer) {
-    res.status(401);
-    res.send("Not authorized");
+    res.status(401).json({ message: "Not authorized" });
     return;
   }
 
   // if token is empty
   const [, token] = bearer.split(" ");
   if (!token) {
-    res.status(401);
-    res.send("Not authorized");
+    res.status(401).json({ message: "Not authorized" });
     return;
   }
 
@@ -34,9 +39,7 @@ export const authentication = (
     next();
     return;
   } catch (e) {
-    console.error(e);
-    res.status(401);
-    res.send("Not authorized");
+    res.status(401).json({ message: "Not authorized", details: e });
     return;
   }
 };

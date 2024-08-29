@@ -36,6 +36,12 @@ export const signIn = async (req: Request, res: Response) => {
       email: req.body.email,
     },
   });
+  if (!user) {
+    res
+      .status(404)
+      .json({ message: "No user found with the E-Mail you provided" });
+    return;
+  }
   const isPasswordValid = await validatePassword(
     req.body.password,
     user?.password as string
