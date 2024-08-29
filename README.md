@@ -25,6 +25,7 @@ functionalities etc. Feel free, its up to you. Hope you enjoy this!
 
 ## NEW FEATURES
 
+- added express limiter for api request limit configuration
 - added docker container for postgres db for development purposes (no need for a postgres database on your system)
 - added helmet to secure http headers
 - added supertest and jest for unit and integration tests

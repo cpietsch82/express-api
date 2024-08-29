@@ -8,6 +8,7 @@ import { authentication } from "./lib/middleware/authentication.middleware";
 import * as dotenv from "dotenv";
 import { errorHandler } from "./lib/middleware/errorhandler.middleware";
 import helmet from "helmet";
+import { limiter } from "./lib/middleware/apilimit.middleware";
 dotenv.config();
 
 const app = express();
@@ -24,7 +25,7 @@ app.use(cors());
 
 app.use("/api/v1", authRoutes);
 app.use("/api/v1", authentication, userRoutes);
-app.use("/api/v1", authentication, todoRoutes);
+app.use("/api/v1", authentication, limiter, todoRoutes);
 
 // error handler middleware needs to be the last app option after adding routes,
 // otherwise the handler doesnt work properly
