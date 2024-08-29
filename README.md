@@ -14,7 +14,13 @@ functionalities etc. Feel free, its up to you. Hope you enjoy this!
   JWT_SECRET=<jwt secret for your authentication>
   ```
 
-- just clone the github repo and start `npm install` and after that `npm run dev`
+- to create/start the postgres server via docker compose
+
+  ```
+  docker compose up
+  ```
+
+- after that, just clone the github repo and start `npm install` and after that `npm run dev`
   or you can use `npm run dev:nodemon` to automatically reload the server after code changes
 
 ## NEW FEATURES
